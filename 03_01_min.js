@@ -4,7 +4,7 @@ function min(a, b) {
     } else {
         return b;
     }
-};
+}
 
 let min_arrow = (a, b) => a < b ? a : b;
 
