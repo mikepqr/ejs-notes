@@ -1,9 +1,12 @@
 function arrayToList(array) {
     array = array.reverse();
     let list = {value: array[0], rest: null};
-    for (let a of array.slice(1)) {
-        list = {value: a, rest: list};
-    }
+    // Non-functional syntactically equivalent to
+    // for (let a of array.slice(1)) {
+    //     list = {value: a, rest: list};
+    // }
+    // forEach is used for its side effects. map returns a new array.
+    array.slice(1).forEach(a => (list = {value: a, rest: list}))
     return list
 }
 

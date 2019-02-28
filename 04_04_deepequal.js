@@ -1,11 +1,29 @@
 function arrayEqual(array1, array2) {
     if (array1.length != array2.length) return false;
-    // array1 = array1.slice(0).sort() // copy and sort
-    // array2 = array2.slice(0).sort()
-    for (let i = 0; i < array1.length; i++) {
-        if (array1[i] != array2[i]) return false;
-    }
-    return true;
+
+    // IMPERATIVE ORIGINAL
+    // for (let i = 0; i < array1.length; i++) {
+    //     if (array1[i] != array2[i]) return false;
+    // }
+
+    // PYTHON VERSION
+    //     any(a1 == a2 for a1, a2 in zip(array1, array2))
+    // or
+    //     any(map(lambda a1, a2: a1 == a2, zip(array1, array2))
+
+    // FUNCTIONAL JS
+    return (
+        // This map over array1 replicates a python zip over array1 and array2.
+        // It is not pretty. Is there a better way?
+        array1
+        // Does map construct the entire array of booleans in memory before
+        // passing it to some? Or is it more like a python generator?
+        .map((e, i) => e == array2[i])
+        // some requires a predicate, which in this case is the identity
+        // function because the array is all bools. Is there a better way?
+        // Would .includes(true) be more idiomatic (and as fast?)
+        .some(e => e)
+    )
 }
 
 function deepEqual(v1, v2) {

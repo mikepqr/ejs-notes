@@ -4,6 +4,7 @@ function recursiveEven(x) {
     return recursiveEven(abs(x) - 2);
 }
 
+// Math.abs exists
 let abs = x => x < 0 ? -x : x;
 
 console.log(recursiveEven(50));

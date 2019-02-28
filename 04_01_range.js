@@ -9,11 +9,21 @@ let range = function(start, end, step=1) {
 }
 
 let sum = function(array) {
-    let total = 0;
-    for (let x of array) {  // note "of" not "in" (which works but does something weird!
-        total += x;
-    }
-    return total;
+    // IMPERATIVE
+    //
+    // let total = 0;
+    // for (let x of array) {  // note "of" not "in" (which works but does something weird!
+    //     total += x;
+    // }
+    // return total;
+    //
+    // IDIOMATIC
+    // let total = 0;
+    // array.forEach(x => total += x)
+    // return total;
+    //
+    // FUNCTIONAL
+    return array.reduce((a, b) => a + b)
 }
 
 console.log(range(5, 10));
